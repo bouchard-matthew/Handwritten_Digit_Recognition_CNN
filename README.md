@@ -1,8 +1,7 @@
 # Handwritten_Digit_Recognition_CNN
 Using MNIST dataset of images to create an Convolutional Neural Network to identify Handwritten Digits
 
-Usage: mabouc4699_Project_Three
+Usage: mabouc4699_Write_Data_to_Folders
+       mabouc4699_Project_Three
 
-On execution, the MNIST training and testing data sets and labels are loaded into variables tr_set, tr_labels, ts_set, and ts_labels respectively. After, the program will begin to save essential data values to variables in preparation for the creation of the ANN. The ANN is created using 60 default neurons and saves the respective trained ANN to a cell matrix array. The resulting NN is tested against the ts_set, and the plotregression of the training data and the 20% or 1/5 reserved data is displayed for user analysis. Lastly, 80 images are displayed on a window of subplots with their "learned" label value.
-
-Note: On execution, the testing_accuracy.m file will calculate for a given data set the accuracy of the NN predicted label(s) using the confusion matrix ((TP + TN) / (TP + TN + FP + FN) = Accuracy of the data set)). Purpose of this file being further systematic testing of the NN accuracy.
+On execution of mabouc4699_Write_Data_to_Folders, the MNIST training and testing data sets and labels are loaded into folders defined by the MNIST image labels (Example: an image with label 0 would be written to a folder defined by 0). After the function writes the data to the user_defined_paths and directories, the main program will begin via establishing the testing and training paths for use in creating imageDataStores. The layers, options, and number of classes (10 = 0 - 9 possible outcomes) are then defined for the CNN which are subsequently used for training the NN. The accuracy of the CNN is tested through various calculations which the user can explore on execution.
