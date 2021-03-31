@@ -1,5 +1,5 @@
-trainingPath = fullfile('C:\Users\Matthew\Documents\MATLAB\Project_Three\trainingSet');
-testingPath = fullfile('C:\Users\Matthew\Documents\MATLAB\Project_Three\testSet');
+trainingPath = fullfile('user_defined_path\trainingSet');
+testingPath = fullfile('user_defined_path\testSet');
 
 trainImds = imageDatastore(trainingPath, 'IncludeSubfolders', true, 'LabelSource', 'foldernames', 'FileExtensions', '.jpg');
 testImds = imageDatastore(testingPath, 'IncludeSubFolders', true, 'LabelSource', 'foldernames', 'FileExtensions', '.jpg');
@@ -13,14 +13,14 @@ layers = [ imageInputLayer(inputSize)
     batchNormalizationLayer
     reluLayer
     
-    maxPooling2dLayer(2,'Stride',2) 
+    maxPooling2dLayer(2,'Stride',2)
     
     convolution2dLayer(5,30,'Padding','same')
     batchNormalizationLayer
     reluLayer
-   
-    maxPooling2dLayer(2,'Stride',2)       
-
+    
+    maxPooling2dLayer(2,'Stride',2)    
+    
     convolution2dLayer(5,45,'Padding','same')
     batchNormalizationLayer
     reluLayer
@@ -32,7 +32,7 @@ layers = [ imageInputLayer(inputSize)
     softmaxLayer
     classificationLayer];
 
-options = trainingOptions('adam','MaxEpochs',25,'ValidationData',trainImdsValidation,'ValidationFrequency',30,'Verbose',false,'Plots','training-progress','MiniBatchSize', 64, 'ExecutionEnvironment','gpu');
+options = trainingOptions('sgdm','MaxEpochs',100,'ValidationData',trainImdsValidation,'ValidationFrequency',30,'Verbose',false,'Plots','training-progress','MiniBatchSize',128, 'ExecutionEnvironment','cpu');
 net = trainNetwork(trainImdsTraining, layers, options);
 
 % YPred = classify(net,trainimdsValidation);
